@@ -2,11 +2,10 @@ import React from "react";
 import { AppBar, Toolbar, Typography, Box } from "@mui/material";
 
 interface NavbarProps {
-  title: string;
   children?: React.ReactNode;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ title, children }) => {
+export const Navbar: React.FC<NavbarProps> = ({ children }) => {
   return (
     <AppBar
       position="fixed"
