@@ -1,31 +1,31 @@
-// Color palette for TruTrip application
+// Color palette for TruTrip application - Brand aligned
 export const colors = {
-  // Primary colors - Modern blue gradient
+  // Primary colors - TruTrip Teal (matching "Trip" in logo)
   primary: {
-    50: "#E3F2FD",
-    100: "#BBDEFB",
-    200: "#90CAF9",
-    300: "#64B5F6",
-    400: "#42A5F5",
-    500: "#2196F3", // Main primary
-    600: "#1E88E5",
-    700: "#1976D2",
-    800: "#1565C0",
-    900: "#0D47A1",
+    50: "#E0F7F7",
+    100: "#B3EAEA",
+    200: "#80DCDC",
+    300: "#4DCDCD",
+    400: "#26C2C2",
+    500: "#00B7B7", // Main primary - TruTrip teal
+    600: "#00A5A5",
+    700: "#008F8F",
+    800: "#007A7A",
+    900: "#005A5A",
   },
 
-  // Secondary colors - Vibrant teal
+  // Secondary colors - Dark charcoal (matching "Tru" in logo)
   secondary: {
-    50: "#E0F2F1",
-    100: "#B2DFDB",
-    200: "#80CBC4",
-    300: "#4DB6AC",
-    400: "#26A69A",
-    500: "#009688", // Main secondary
-    600: "#00897B",
-    700: "#00796B",
-    800: "#00695C",
-    900: "#004D40",
+    50: "#F5F5F5",
+    100: "#E8E8E8",
+    200: "#D1D1D1",
+    300: "#B0B0B0",
+    400: "#888888",
+    500: "#2D2D2D", // Main secondary - Dark charcoal
+    600: "#262626",
+    700: "#1F1F1F",
+    800: "#1A1A1A",
+    900: "#0F0F0F",
   },
 
   // Success colors - Fresh green
@@ -92,25 +92,25 @@ export const colors = {
     darker: "#F1F3F4",
   },
 
-  // Text colors
+  // Text colors - Updated to match brand
   text: {
-    primary: "#1A1A1A",
+    primary: "#2D2D2D", // Dark charcoal for primary text
     secondary: "#666666",
     disabled: "#9E9E9E",
     hint: "#BDBDBD",
   },
 };
 
-// Gradient definitions
+// Gradient definitions - Updated for TruTrip brand
 export const gradients = {
-  primary: "linear-gradient(135deg, #2196F3 0%, #21CBF3 100%)",
-  secondary: "linear-gradient(135deg, #009688 0%, #00BCD4 100%)",
+  primary: "linear-gradient(135deg, #00B7B7 0%, #26C2C2 100%)", // Teal gradient
+  secondary: "linear-gradient(135deg, #2D2D2D 0%, #1A1A1A 100%)", // Dark gradient
   success: "linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%)",
   warning: "linear-gradient(135deg, #FF9800 0%, #FFC107 100%)",
   error: "linear-gradient(135deg, #F44336 0%, #FF5722 100%)",
   sunset: "linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%)",
-  ocean: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-  travel: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+  ocean: "linear-gradient(135deg, #00B7B7 0%, #2D2D2D 100%)", // TruTrip brand gradient
+  travel: "linear-gradient(135deg, #00B7B7 0%, #26C2C2 100%)", // Teal travel gradient
 };
 
 // Shadow definitions
@@ -118,5 +118,5 @@ export const shadows = {
   light: "0px 2px 4px rgba(0, 0, 0, 0.1)",
   medium: "0px 4px 8px rgba(0, 0, 0, 0.12)",
   heavy: "0px 8px 16px rgba(0, 0, 0, 0.15)",
-  colored: "0px 4px 20px rgba(33, 150, 243, 0.3)",
+  colored: "0px 4px 20px rgba(0, 183, 183, 0.3)", // Updated to use teal
 };

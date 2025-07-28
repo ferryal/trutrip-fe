@@ -1,85 +1,115 @@
 import React from "react";
-import { Typography as MuiTypography, styled } from "@mui/material";
+import { Typography as MuiTypography } from "@mui/material";
 import type { TypographyProps as MuiTypographyProps } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { gradients } from "../../theme/colors";
 
-interface CustomTypographyProps {
+// Enhanced Typography with gradient support
+interface GradientTypographyProps {
   gradient?: boolean;
-  gradientType?:
-    | "primary"
-    | "secondary"
-    | "success"
-    | "warning"
-    | "error"
-    | "sunset"
-    | "ocean"
-    | "travel";
+  gradientType?: keyof typeof gradients;
 }
 
-type TypographyProps = MuiTypographyProps & CustomTypographyProps;
+type TypographyProps = MuiTypographyProps & GradientTypographyProps;
 
-const GradientTypography = styled(MuiTypography)<{ gradientType: string }>(
-  ({ theme, gradientType }) => ({
-    background:
-      theme.palette.gradients[
-        gradientType as keyof typeof theme.palette.gradients
-      ],
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundClip: "text",
-    fontWeight: 700,
+const StyledTypography = styled(MuiTypography)<GradientTypographyProps>(
+  ({ gradient, gradientType }) => ({
+    ...(gradient && {
+      background: gradients[gradientType || "primary"],
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      backgroundClip: "text",
+      display: "inline-block",
+    }),
   })
 );
 
 export const Typography: React.FC<TypographyProps> = ({
-  gradient = false,
-  gradientType = "primary",
+  gradient,
+  gradientType,
   children,
   ...props
 }) => {
-  if (gradient) {
-    return (
-      <GradientTypography gradientType={gradientType} {...props}>
-        {children}
-      </GradientTypography>
-    );
-  }
-
-  return <MuiTypography {...props}>{children}</MuiTypography>;
+  return (
+    <StyledTypography
+      gradient={gradient}
+      gradientType={gradientType}
+      {...props}
+    >
+      {children}
+    </StyledTypography>
+  );
 };
 
-// Specialized typography variants
-export const Title: React.FC<Omit<TypographyProps, "variant">> = (props) => (
-  <Typography variant="h1" {...props} />
+// Predefined typography variants
+export const Heading: React.FC<TypographyProps> = ({ children, ...props }) => (
+  <Typography variant="h4" fontWeight={600} {...props}>
+    {children}
+  </Typography>
 );
 
-export const Subtitle: React.FC<Omit<TypographyProps, "variant">> = (props) => (
-  <Typography variant="h2" {...props} />
+export const Subheading: React.FC<TypographyProps> = ({
+  children,
+  ...props
+}) => (
+  <Typography variant="h5" fontWeight={500} {...props}>
+    {children}
+  </Typography>
 );
 
-export const Heading: React.FC<Omit<TypographyProps, "variant">> = (props) => (
-  <Typography variant="h3" {...props} />
+export const Title: React.FC<TypographyProps> = ({ children, ...props }) => (
+  <Typography variant="h6" fontWeight={600} {...props}>
+    {children}
+  </Typography>
 );
 
-export const Subheading: React.FC<Omit<TypographyProps, "variant">> = (
-  props
-) => <Typography variant="h4" {...props} />;
-
-export const Body: React.FC<Omit<TypographyProps, "variant">> = (props) => (
-  <Typography variant="body1" {...props} />
+export const Body: React.FC<TypographyProps> = ({ children, ...props }) => (
+  <Typography variant="body1" {...props}>
+    {children}
+  </Typography>
 );
 
-export const Caption: React.FC<Omit<TypographyProps, "variant">> = (props) => (
-  <Typography variant="body2" {...props} />
+export const Caption: React.FC<TypographyProps> = ({ children, ...props }) => (
+  <Typography variant="caption" color="text.secondary" {...props}>
+    {children}
+  </Typography>
 );
 
-export const GradientTitle: React.FC<
-  Omit<TypographyProps, "variant" | "gradient">
-> = (props) => (
-  <Typography variant="h1" gradient gradientType="travel" {...props} />
+// Brand-specific typography
+export const GradientTitle: React.FC<TypographyProps> = ({
+  children,
+  ...props
+}) => (
+  <Typography
+    variant="h2"
+    fontWeight={700}
+    color="text.primary"
+    sx={{
+      fontSize: { xs: "2.5rem", md: "3.75rem" },
+      lineHeight: 1.2,
+      letterSpacing: "-0.02em",
+    }}
+    {...props}
+  >
+    {children}
+  </Typography>
 );
 
-export const GradientHeading: React.FC<
-  Omit<TypographyProps, "variant" | "gradient">
-> = (props) => (
-  <Typography variant="h3" gradient gradientType="primary" {...props} />
+export const GradientHeading: React.FC<TypographyProps> = ({
+  children,
+  ...props
+}) => (
+  <Typography
+    variant="h3"
+    fontWeight={600}
+    color="text.primary"
+    sx={{
+      fontSize: { xs: "2rem", md: "3rem" },
+      lineHeight: 1.3,
+      letterSpacing: "-0.01em",
+    }}
+    {...props}
+  >
+    {children}
+  </Typography>
 );
