@@ -1,13 +1,11 @@
 import React from "react";
-import { Box, Paper, Divider } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 import {
   TrendingUp as TrendingUpIcon,
   AttachMoney as MoneyIcon,
   Flight as FlightIcon,
   Business as BusinessIcon,
   Event as EventIcon,
-  Schedule as ScheduleIcon,
-  CheckCircle as CompletedIcon,
   Savings as SavingsIcon,
   Flag as PriorityIcon,
   Assignment as DraftIcon,

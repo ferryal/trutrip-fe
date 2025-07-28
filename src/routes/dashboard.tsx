@@ -46,7 +46,7 @@ import {
   Row,
   Button,
 } from "../components";
-import { GradientTitle, Heading } from "../components/ui/Typography";
+import { GradientTitle } from "../components/ui/Typography";
 import type {
   Trip,
   TripFilters,

@@ -46,7 +46,6 @@ import {
   Row,
   Button,
 } from "../components";
-import { GradientTitle, Heading } from "../components/ui/Typography";
 import type {
   Trip,
   TripFilters,
@@ -62,7 +61,7 @@ export const Route = createFileRoute("/")({
 function Dashboard() {
   // UI State
   const [activeTab, setActiveTab] = React.useState(0);
-  const [viewMode, setViewMode] = React.useState<ViewMode>("card");
+  const [viewMode, setViewMode] = React.useState<ViewMode>("table");
   const [pagination, setPagination] = React.useState<PaginationParams>({
     page: 1,
     limit: 10,
@@ -290,8 +289,6 @@ function Dashboard() {
   return (
     <Container maxWidth="xl" padding="large">
       <Section>
-        <GradientTitle gutterBottom>TruTrip Dashboard</GradientTitle>
-
         {/* Controls Section */}
         <Box
           sx={{

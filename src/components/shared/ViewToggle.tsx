@@ -32,6 +32,7 @@ export const ViewToggle: React.FC<ViewToggleProps> = ({
         onChange={handleChange}
         size="small"
         sx={{
+          gap: 1,
           "& .MuiToggleButton-root": {
             borderRadius: 1,
             px: 2,
