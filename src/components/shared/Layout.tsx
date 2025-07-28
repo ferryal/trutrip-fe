@@ -34,9 +34,9 @@ export const Container: React.FC<CustomContainerProps> = ({
 
   const paddingValue = {
     none: 0,
-    small: 2,
-    medium: 4,
-    large: 6,
+    small: 0,
+    medium: 0,
+    large: 0,
   }[padding];
 
   if (background === "gradient") {
@@ -73,8 +73,8 @@ export const Section: React.FC<
 > = ({ spacing = "medium", children, ...props }) => {
   const spacingValue = {
     small: 4,
-    medium: 8,
-    large: 12,
+    medium: 0,
+    large: 0,
   }[spacing];
 
   return (

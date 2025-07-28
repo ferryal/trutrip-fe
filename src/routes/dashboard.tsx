@@ -55,7 +55,7 @@ import type {
   TripFormData,
 } from "../types/api";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/dashboard")({
   component: Dashboard,
 });
 

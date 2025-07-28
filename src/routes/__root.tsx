@@ -23,19 +23,6 @@ export const Route = createRootRoute({
         <MuiButton
           color="inherit"
           component={Link}
-          to="/dashboard"
-          sx={{
-            mr: 2,
-            color: "text.primary",
-            "&:hover": { backgroundColor: "rgba(0, 183, 183, 0.1)" },
-          }}
-          variant="text"
-        >
-          Dashboard
-        </MuiButton>
-        <MuiButton
-          color="inherit"
-          component={Link}
           to="/about"
           variant="text"
           sx={{
