@@ -154,12 +154,12 @@ export const StatsCard: React.FC<StatsCardProps> = ({
   const getTrendIcon = () => {
     switch (trend) {
       case "up":
-        return <TrendingUpIcon sx={{ color: "success.main", fontSize: 20 }} />;
+        return <TrendingUpIcon sx={{ color: "success.main", fontSize: 16 }} />;
       case "down":
-        return <TrendingDownIcon sx={{ color: "error.main", fontSize: 20 }} />;
+        return <TrendingDownIcon sx={{ color: "error.main", fontSize: 16 }} />;
       default:
         return (
-          <TrendingFlatIcon sx={{ color: "text.secondary", fontSize: 20 }} />
+          <TrendingFlatIcon sx={{ color: "text.secondary", fontSize: 16 }} />
         );
     }
   };
@@ -177,47 +177,54 @@ export const StatsCard: React.FC<StatsCardProps> = ({
 
   return (
     <Card cardVariant="elevated" hover>
-      <CardContent sx={{ p: 3 }}>
+      <CardContent sx={{ p: 2 }}>
         <Box
           sx={{
             display: "flex",
-            alignItems: "flex-start",
+            alignItems: "center",
             justifyContent: "space-between",
-            mb: 2,
+            mb: 1,
           }}
         >
-          <Box sx={{ flex: 1 }}>
-            <Typography variant="body2" color="text.secondary" gutterBottom>
-              {title}
-            </Typography>
-            <Typography variant="h4" fontWeight="bold" color="text.primary">
-              {value}
-            </Typography>
-            {subtitle && (
-              <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-                {getTrendIcon()}
-                <Typography
-                  variant="body2"
-                  sx={{ ml: 0.5, color: getTrendColor() }}
-                >
-                  {subtitle}
-                </Typography>
-              </Box>
-            )}
-          </Box>
+          <Typography
+            variant="caption"
+            color="text.secondary"
+            sx={{ fontWeight: 500 }}
+          >
+            {title}
+          </Typography>
           {icon && (
             <Box
               sx={{
-                ml: 2,
-                p: 1.5,
-                borderRadius: 2,
-                backgroundColor: "background.default",
+                color: "text.secondary",
+                opacity: 0.7,
               }}
             >
               {icon}
             </Box>
           )}
         </Box>
+
+        <Typography
+          variant="h5"
+          fontWeight="bold"
+          color="text.primary"
+          sx={{ mb: 1 }}
+        >
+          {value}
+        </Typography>
+
+        {subtitle && (
+          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            {getTrendIcon()}
+            <Typography
+              variant="caption"
+              sx={{ color: getTrendColor(), fontWeight: 500 }}
+            >
+              {subtitle}
+            </Typography>
+          </Box>
+        )}
       </CardContent>
     </Card>
   );
