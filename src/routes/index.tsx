@@ -40,6 +40,7 @@ import {
   TripStats,
   TripFormModal,
   TripDetailModal,
+  TripDeleteModal,
   ViewToggle,
   Container,
   Section,
@@ -77,6 +78,11 @@ function Dashboard() {
   }>({ open: false, trip: null, mode: "create" });
 
   const [tripDetailModal, setTripDetailModal] = React.useState<{
+    open: boolean;
+    trip: Trip | null;
+  }>({ open: false, trip: null });
+
+  const [tripDeleteModal, setTripDeleteModal] = React.useState<{
     open: boolean;
     trip: Trip | null;
   }>({ open: false, trip: null });
@@ -185,22 +191,27 @@ function Dashboard() {
     setTripDetailModal({ open: true, trip });
   };
 
-  const handleDeleteTrip = async (trip: Trip) => {
-    if (window.confirm(`Are you sure you want to delete "${trip.title}"?`)) {
-      try {
-        await deleteTripMutation.mutateAsync(trip.id);
-        setSnackbar({
-          open: true,
-          message: "Trip deleted successfully",
-          severity: "success",
-        });
-      } catch (error) {
-        setSnackbar({
-          open: true,
-          message: "Failed to delete trip",
-          severity: "error",
-        });
-      }
+  const handleDeleteTrip = (trip: Trip) => {
+    setTripDeleteModal({ open: true, trip });
+  };
+
+  const confirmDeleteTrip = async () => {
+    if (!tripDeleteModal.trip) return;
+
+    try {
+      await deleteTripMutation.mutateAsync(tripDeleteModal.trip.id);
+      setTripDeleteModal({ open: false, trip: null });
+      setSnackbar({
+        open: true,
+        message: "Trip deleted successfully",
+        severity: "success",
+      });
+    } catch (error) {
+      setSnackbar({
+        open: true,
+        message: "Failed to delete trip",
+        severity: "error",
+      });
     }
   };
 
@@ -506,6 +517,15 @@ function Dashboard() {
           trip={tripDetailModal.trip}
           onEdit={handleEditTrip}
           onDelete={handleDeleteTrip}
+        />
+
+        {/* Trip Delete Modal */}
+        <TripDeleteModal
+          open={tripDeleteModal.open}
+          onClose={() => setTripDeleteModal({ open: false, trip: null })}
+          onConfirm={confirmDeleteTrip}
+          trip={tripDeleteModal.trip}
+          loading={deleteTripMutation.isPending}
         />
 
         {/* Snackbar for notifications */}
