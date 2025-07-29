@@ -158,8 +158,10 @@ export const TripTable: React.FC<TripTableProps> = ({
                 <TableCell>Trip Details</TableCell>
                 <TableCell>Destination</TableCell>
                 <TableCell>Traveler</TableCell>
-                <TableCell>Dates</TableCell>
+                <TableCell>Start Date</TableCell>
+                <TableCell>End Date</TableCell>
                 <TableCell>Budget</TableCell>
+                <TableCell>Actual Cost</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell>Priority</TableCell>
                 <TableCell>Actions</TableCell>
@@ -235,7 +237,7 @@ export const TripTable: React.FC<TripTableProps> = ({
                       </Box>
                     </TableCell>
 
-                    {/* Dates */}
+                    {/* Start Date */}
                     <TableCell>
                       <Box sx={{ display: "flex", alignItems: "center" }}>
                         <CalendarIcon
@@ -245,9 +247,6 @@ export const TripTable: React.FC<TripTableProps> = ({
                         <Box>
                           <Typography variant="body2">
                             {formatDate(trip.start_date)}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            to {formatDate(trip.end_date)}
                           </Typography>
                           {daysUntilStart > 0 && (
                             <Typography
@@ -262,6 +261,21 @@ export const TripTable: React.FC<TripTableProps> = ({
                       </Box>
                     </TableCell>
 
+                    {/* End Date */}
+                    <TableCell>
+                      <Box sx={{ display: "flex", alignItems: "center" }}>
+                        <CalendarIcon
+                          fontSize="small"
+                          sx={{ mr: 0.5, color: "text.secondary" }}
+                        />
+                        <Box>
+                          <Typography variant="body2">
+                            {formatDate(trip.end_date)}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </TableCell>
+
                     {/* Budget */}
                     <TableCell>
                       <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -269,19 +283,24 @@ export const TripTable: React.FC<TripTableProps> = ({
                           fontSize="small"
                           sx={{ mr: 0.5, color: "text.secondary" }}
                         />
-                        <Box>
-                          <Typography variant="body2" fontWeight={600}>
-                            {formatCurrency(trip.total_budget)}
-                          </Typography>
-                          {trip.actual_cost && trip.actual_cost > 0 && (
-                            <Typography
-                              variant="caption"
-                              color="text.secondary"
-                            >
-                              Spent: {formatCurrency(trip.actual_cost)}
-                            </Typography>
-                          )}
-                        </Box>
+                        <Typography variant="body2" fontWeight={600}>
+                          {formatCurrency(trip.total_budget)}
+                        </Typography>
+                      </Box>
+                    </TableCell>
+
+                    {/* Actual Cost */}
+                    <TableCell>
+                      <Box sx={{ display: "flex", alignItems: "center" }}>
+                        <MoneyIcon
+                          fontSize="small"
+                          sx={{ mr: 0.5, color: "text.secondary" }}
+                        />
+                        <Typography variant="body2" fontWeight={600}>
+                          {trip.actual_cost && trip.actual_cost > 0
+                            ? formatCurrency(trip.actual_cost)
+                            : "N/A"}
+                        </Typography>
                       </Box>
                     </TableCell>
 

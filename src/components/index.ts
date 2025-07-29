@@ -17,6 +17,7 @@ export * from "./trip/TripStatusBadge";
 export * from "./trip/TripPriorityBadge";
 export * from "./trip/TripFormModal";
 export * from "./trip/TripDetailModal";
+export * from "./trip/TripDeleteModal";
 
 // Theme
 export { theme } from "../theme/theme";

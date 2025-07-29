@@ -120,6 +120,15 @@ export const theme = createTheme({
   shape: {
     borderRadius: 12,
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1600, // Increased from default 1200px to 1400px
+      xl: 1800, // Increased from default 1536px to 1600px
+    },
+  },
   components: {
     MuiButton: {
       styleOverrides: {
