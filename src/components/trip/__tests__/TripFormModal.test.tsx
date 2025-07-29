@@ -145,7 +145,6 @@ describe("TripFormModal", () => {
   });
 
   it("renders form with required fields and submit button", async () => {
-    const user = userEvent.setup();
     render(
       <ThemeWrapper>
         <TripFormModal

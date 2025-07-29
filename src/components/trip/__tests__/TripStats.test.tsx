@@ -222,7 +222,7 @@ describe("TripStats", () => {
       </ThemeWrapper>
     );
 
-    Object.entries(mockStats.by_status).forEach(([status, count]) => {
+    Object.entries(mockStats.by_status).forEach(([count]) => {
       expect(screen.getByText(count.toString())).toBeInTheDocument();
     });
   });
@@ -234,7 +234,7 @@ describe("TripStats", () => {
       </ThemeWrapper>
     );
 
-    Object.entries(mockStats.by_purpose).forEach(([purpose, count]) => {
+    Object.entries(mockStats.by_purpose).forEach(([count]) => {
       expect(screen.getByText(count.toString())).toBeInTheDocument();
     });
   });
@@ -246,7 +246,7 @@ describe("TripStats", () => {
       </ThemeWrapper>
     );
 
-    Object.entries(mockStats.by_priority).forEach(([priority, count]) => {
+    Object.entries(mockStats.by_priority).forEach(([count]) => {
       expect(screen.getByText(count.toString())).toBeInTheDocument();
     });
   });
